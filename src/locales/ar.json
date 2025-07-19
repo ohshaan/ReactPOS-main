@@ -453,6 +453,36 @@
   "NO_ITEMS_LEFT": "لا توجد عناصر في هذه القائمة أو تم نقلها جميعاً إلى اليمين",
   "NO_ITEMS_ADDED": "لا توجد عناصر مضافة",
   "ENTER_NOTES": "أدخل ملاحظاتك"
+
+},
+"SHIFT_CLOSING": {
+  "TITLE": "إغلاق الوردية",
+  "START_DATE": "وقت وتاريخ بدء الوردية :",
+  "END_DATE": "وقت وتاريخ إغلاق الوردية :",
+  "CASH_AMOUNT": "المبلغ النقدي :",
+  "CREDIT_CARD_AMOUNT": "مبلغ بطاقة الائتمان :",
+  "CITY_LEDGER_AMOUNT": "مبلغ دفتر المدينة :",
+  "CANNOT_CLOSE_TITLE": "لا يمكن إغلاق الوردية",
+  "CANNOT_CLOSE_TEXT": "المبلغ النقدي وبطاقة الائتمان والدفتر مطلوب. يرجى إدخال قيم صالحة."
+},
+"DAY_END_CLOSING": {
+  "TITLE": "إغلاق نهاية اليوم",
+  "CANNOT_CLOSE_TITLE": "لا يمكن إجراء إغلاق نهاية اليوم",
+  "AMOUNT_MISSING": "المبلغ النقدي وبطاقة الائتمان والدفتر مطلوب. يرجى إدخال قيم صالحة.",
+  "DATE_REQUIRED_TEXT": "مطلوب تاريخ البدء والانتهاء.",
+  "IN_PROGRESS_TITLE": "جاري إغلاق نهاية اليوم",
+  "IN_PROGRESS_TEXT": "يرجى مراجعة جميع التفاصيل قبل المتابعة."
+},
+"POS_REPORT": {
+  "TITLE": "التقرير",
+  "BRIEF_REPORT": "تقرير مختصر",
+  "KOT_REPORT": "تقرير كوت",
+  "ALL_INVOICE_REPORT": "تقارير جميع الفواتير",
+  "INVOICE_SUMMARY_REPORT": "تقارير ملخص الفاتورة",
+  "EMPLOYEE_WISE_INVOICE_REPORT": "تقارير الفواتير حسب الموظف",
+  "OPEN_KOT_INVOICE_REPORT": "تقارير فواتير KOT المفتوحة",
+  "COLLECTION_DETAILS_INVOICE_REPORT": "تقارير تفاصيل التحصيل"
+
 }
 
 }

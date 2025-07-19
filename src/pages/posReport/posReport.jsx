@@ -22,6 +22,7 @@ import { toast } from "react-toastify";
 import moment from "moment";
 import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 import {
   updateCompanyLogo,
@@ -46,6 +47,7 @@ function Report() {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const userDetails = JSON.parse(localStorage.getItem("user"));
   const outletDetail = localStorage.getItem("openOutlet");
   const outlet = JSON.parse(outletDetail);
@@ -128,7 +130,7 @@ function Report() {
       } else {
         setLoading(false);
         Swal.fire({
-          title: "Error",
+          title: t("COMMON.ERROR"),
           text: res?.message || "Logout failed",
           icon: "error",
           confirmButtonText: "OK",
@@ -137,7 +139,7 @@ function Report() {
     } catch (error) {
       setLoading(false);
       Swal.fire({
-        title: "Error",
+        title: t("COMMON.ERROR"),
         text: error?.message || "An unexpected error occurred",
         icon: "error",
         confirmButtonText: "OK",
@@ -163,35 +165,13 @@ function Report() {
   };
 
   const options = [
-    {
-      value: 1,
-      label: "Brief Report",
-    },
-    {
-      value: 2,
-      label: "Kot Report",
-    },
-    {
-      value: 3,
-      label: "All Invoice Reports",
-    },
-    {
-      value: 4,
-      label: "Invoice Summary Reports",
-    },
-    {
-      value: 5,
-      label: "Employee Wise Invoice Reports",
-    },
-    {
-      value: 6,
-      label: "Open KOT Invoice Reports",
-    },
-
-    {
-      value: 7,
-      label: "Collection Details Invoice Reports",
-    },
+    { value: 1, label: t("POS_REPORT.BRIEF_REPORT") },
+    { value: 2, label: t("POS_REPORT.KOT_REPORT") },
+    { value: 3, label: t("POS_REPORT.ALL_INVOICE_REPORT") },
+    { value: 4, label: t("POS_REPORT.INVOICE_SUMMARY_REPORT") },
+    { value: 5, label: t("POS_REPORT.EMPLOYEE_WISE_INVOICE_REPORT") },
+    { value: 6, label: t("POS_REPORT.OPEN_KOT_INVOICE_REPORT") },
+    { value: 7, label: t("POS_REPORT.COLLECTION_DETAILS_INVOICE_REPORT") },
   ];
 
   useEffect(() => {
@@ -221,7 +201,7 @@ function Report() {
           ]);
         } else {
           Swal.fire({
-            title: "Error",
+            title: t("COMMON.ERROR"),
             text: data?.message,
             icon: "error",
             showCancelButton: false,
@@ -2997,7 +2977,7 @@ function Report() {
       </div>
 
       <Title level={3} style={{ textAlign: "center", color: "white" }}>
-        Report
+        {t("POS_REPORT.TITLE")}
       </Title>
 
       <div

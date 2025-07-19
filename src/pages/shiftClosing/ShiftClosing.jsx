@@ -33,6 +33,8 @@ import { updateCustomerData } from "../../redux/slices/customerSlice";
 import moment from "moment";
 import { Icon } from "@iconify/react";
 
+import { useTranslation } from "react-i18next";
+
 const { Title, Text } = Typography;
 
 function ShiftClosing() {
@@ -47,6 +49,7 @@ function ShiftClosing() {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const userDetails = JSON.parse(localStorage.getItem("user"));
   const outletDetail = localStorage.getItem("openOutlet");
@@ -368,8 +371,8 @@ function ShiftClosing() {
     ) {
       setLoader(false);
       Swal.fire({
-        title: "Shift Cannot be closed",
-        text: `Cash Amount, Credit Card Amount, and City Ledger Amount are required. Please enter valid values.`,
+        title: t("SHIFT_CLOSING.CANNOT_CLOSE_TITLE"),
+        text: t("SHIFT_CLOSING.CANNOT_CLOSE_TEXT"),
         icon: "error",
         showCancelButton: false,
         confirmButtonText: "Ok",
@@ -411,7 +414,7 @@ function ShiftClosing() {
               } else {
                 setLoader(false);
                 Swal.fire({
-                  title: "Shift Cannot be closed",
+                  title: t("SHIFT_CLOSING.CANNOT_CLOSE_TITLE"),
                   text: data?.message,
                   icon: "error",
                   showCancelButton: false,
@@ -513,7 +516,7 @@ function ShiftClosing() {
       </div>
 
       <Title level={3} style={{ textAlign: "center", color: "white" }}>
-        Shift Closing
+        {t("SHIFT_CLOSING.TITLE")}
       </Title>
 
       <div
@@ -544,7 +547,7 @@ function ShiftClosing() {
               <Form.Item
                 label={
                   <Text style={{ color: "black" }}>
-                    Shift Starting Date & Time :{" "}
+                    {t("SHIFT_CLOSING.START_DATE")}
                   </Text>
                 }
                 name="startDate"
@@ -571,7 +574,7 @@ function ShiftClosing() {
                   showTime
                   format="DD-MMM-YYYY HH:mm"
                   style={{ width: "100%" }}
-                  placeholder="Select Shift Starting Date & Time"
+                  placeholder={t("SHIFT_CLOSING.START_DATE")}
                 />
               </Form.Item>
             </div>
@@ -581,7 +584,7 @@ function ShiftClosing() {
               <Form.Item
                 label={
                   <Text style={{ color: "black" }}>
-                    Shift Closing Date & Time :{" "}
+                    {t("SHIFT_CLOSING.END_DATE")}
                   </Text>
                 }
                 name="endDate"
@@ -592,7 +595,7 @@ function ShiftClosing() {
                   format="DD-MMM-YYYY HH:mm"
                   style={{ width: "100%" }}
                   disabled // read-only
-                  placeholder="Select Shift Closing Date & Time"
+                  placeholder={t("SHIFT_CLOSING.END_DATE")}
                 />
               </Form.Item>
             </div>
@@ -611,7 +614,7 @@ function ShiftClosing() {
             {/* Cash */}
             <div className="col-span-12 md:col-span-4">
               <Form.Item
-                label={<Text style={{ color: "black" }}>Cash Amount : </Text>}
+                label={<Text style={{ color: "black" }}>{t("SHIFT_CLOSING.CASH_AMOUNT")}</Text>}
                 name="cash"
                 style={{ marginBottom: "0px", textAlign: "right" }}
               >
@@ -657,7 +660,7 @@ function ShiftClosing() {
             <div className="col-span-12 md:col-span-4">
               <Form.Item
                 label={
-                  <Text style={{ color: "black" }}>Credit Card Amount : </Text>
+                  <Text style={{ color: "black" }}>{t("SHIFT_CLOSING.CREDIT_CARD_AMOUNT")}</Text>
                 }
                 name="creditCard"
                 style={{ marginBottom: "0px", textAlign: "right" }}
@@ -703,7 +706,7 @@ function ShiftClosing() {
             {/* City Ledger */}
             <div className="col-span-12 md:col-span-4">
               <Form.Item
-                label={<Text style={{ color: "black" }}>City Ledger : </Text>}
+                label={<Text style={{ color: "black" }}>{t("SHIFT_CLOSING.CITY_LEDGER_AMOUNT")}</Text>}
                 name="cityLedger"
                 style={{ marginBottom: "0px", textAlign: "right" }}
               >
