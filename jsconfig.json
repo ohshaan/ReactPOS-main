@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "."
+  },
+  "exclude": [
+    "node_modules",
+    "**/node_modules/*"
+  ]
+}

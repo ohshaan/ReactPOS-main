@@ -1,0 +1,12 @@
+export { default as Login } from "./login/Login";
+export { default as OutletSelection } from "./ouletSelection/OutletSelection";
+export { default as Kot } from "./kot/Kot";
+export { default as Pay } from "./pay/Pay";
+export { default as CustomerRegistration } from "./customeReg/CustomerRegistration";
+export { default as TableManagement } from "./tableManagemnet/TableManagement";
+export { default as RunningKot } from "./runnningKot/RunningKot";
+export { default as ShiftClosing } from "./shiftClosing/ShiftClosing";
+export { default as DayEndClosing } from "./dayEndClosing/DayEndClosing";
+export { default as TableTransfer } from "./tableTransfer/Tabletransfer";
+export { default as TableTransferdemo } from "./tableTransfer/TabletransferDemo";
+export { default as Report } from "./posReport/posReport";

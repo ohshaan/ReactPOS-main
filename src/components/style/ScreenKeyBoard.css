@@ -1,0 +1,6 @@
+  
+  /* Override all keys */
+  .hg-button {
+    background-color: var(--color-primary) !important;
+    color: var(--color-font-white) !important;
+  }

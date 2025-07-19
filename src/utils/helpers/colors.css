@@ -1,0 +1,57 @@
+:root {
+  --color-primary: #082944;
+  --color-secondary: #475C6C;
+  --color-danger: #ae2c2c;
+  --color-success: #31b563;
+  --color-slideBtn: #355364;
+  --color-slideSelectedBtn: #093d68;
+  --color-font-white: #ffffff;
+  --color-outlet-btn: #dee8ee;
+  --color-footer-btn: #5F7887;
+  --color-icon:#6B96AF;
+  --color-icon-delete:#EC4D4F;
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+.bg-danger {
+  background-color: var(--color-danger);
+}
+.bg-success {
+  background-color: var(--color-success);
+}
+.bg-slide-button {
+  background-color: var(--color-slideBtn);
+}
+.bg-selected-button {
+  background-color: var(--color-slideSelectedBtn);
+}
+.text-white {
+  color: var(--color-font-white);
+}
+.bg-outlet {
+  background-color: var(--color-outlet-btn);
+}
+.bg-kot-footer-btn{
+  background-color: var(--color-footer-btn);
+}
+.bg-icon-color{
+  background-color: var(--color-icon);
+}
+.bg-icon-delete{
+  background-color: var(--color-icon-delete);
+}
+.text-icon{
+  color: var(--color-icon);
+  border:1px solid var(--color-icon);
+}
+/* .hg-theme-default .hg-button {
+  background:  var(--color-secondary) !important;
+  color: rgb(255, 255, 255);
+} */
+
