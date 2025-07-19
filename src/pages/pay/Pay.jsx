@@ -33,7 +33,7 @@ import {
 	selectTotal,
 } from "../../redux/selector/orderSlector";
 import { Layout } from "../../components";
-import { AdlerLogo } from "../../assets/images";
+import { AdlerLogo, companyLogo } from "../../assets/images";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	OrderSummary,
@@ -180,7 +180,7 @@ function Pay() {
 	const customer = useSelector(selectCustomer);
 	const reduxKotDetail = useSelector(selectKotDetails);
 	// const getCompanyLogo = useSelector((state) => state?.user?.comapnyLogoApi);
-	const getCompanyLogo = localStorage.getItem("cmpLogo");
+        const getCompanyLogo = localStorage.getItem("cmpLogo") || companyLogo;
 	const amtDecimal = config?.amount || 2;
 
 	const [isModalOpen, setIsModalOpen] = useState(false);
