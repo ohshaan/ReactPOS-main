@@ -6,6 +6,7 @@ import { clearFromBack, resetDial } from "../../utils/helpers/dialpad";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { userModel } from "../../plugins/models";
+import { companyLogo } from "../../assets/images";
 import {
 	updateCompanyLogo,
 	updateUserDetails,
@@ -26,7 +27,7 @@ function Login() {
 	// const companyLogo = localStorage.getItem("cmpLogo");
 	const [loading, isLoading] = useState(false);
 	const [logoLoading, setLogoLoading] = useState(false);
-	const [logo, setLogo] = useState(localStorage.getItem("cmpLogo") || null);
+       const [logo, setLogo] = useState(localStorage.getItem("cmpLogo") || companyLogo);
 	/**
 	 * The function `handlePinChange` updates the pin by appending the provided data if the pin length is
 	 * less than 6.
