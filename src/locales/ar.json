@@ -423,7 +423,10 @@
   "UNSETTLED": "غير مستقر",
   "SETTLED": "مستقر",
   "AMOUNT": "المبلغ"
+},
+"TABLE_MANAGEMENT": {
+  "TITLE": "إدارة الطاولة",
+  "COVERS": "عدد المقاعد: {{count}}"
 }
-
 
 }
