@@ -1,4 +1,5 @@
 import { Input, Modal, Table, Empty, Spin } from "antd";
+import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import payModel from "../../../plugins/models/payModel";
@@ -9,7 +10,7 @@ import { updateSlab } from "../../../redux/slices/paySlice";
 function SlabList({ isModalOpen, setIsModalOpen, defaultObj }) {
 	const dispatch = useDispatch();
 	const outletDetails = JSON.parse(localStorage.getItem("outletDetails"));
-
+    const { t } = useTranslation();
 	const [slabList, setSlabList] = useState(null);
 	const [selected, setSelected] = useState(null);
 	const [loading, isLoading] = useState(false);
@@ -17,16 +18,16 @@ function SlabList({ isModalOpen, setIsModalOpen, defaultObj }) {
 
 	const tableColumn = [
 		{
-			title: "Slab Name",
+			title: t("PAYMENT.SLAB"),
 			dataIndex: "slabname",
 			key: "discountslabhdrid",
-			render: (text) => <sapn>{text}</sapn>,
+			render: (text) => <span>{text}</span>,
 		},
 		{
-			title: "Customer Name",
+			title: t("CUSTOMER.NAME"),
 			dataIndex: "customername",
 			key: "customerid",
-			render: (text) => <sapn>{text}</sapn>,
+			render: (text) => <span>{t(text)}</span>,
 		},
 	];
 
@@ -54,7 +55,7 @@ function SlabList({ isModalOpen, setIsModalOpen, defaultObj }) {
 					setSlabList(data?.data);
 				} else {
 					setSlabList([]);
-					toast.error(data?.info || data?.message || "something went wrong");
+					toast.error(data?.info || data?.message || t("COMMON.SOMETHING_WENT_WRONG"));
 				}
 				isLoading(false);
 			})
@@ -105,7 +106,7 @@ function SlabList({ isModalOpen, setIsModalOpen, defaultObj }) {
 	return (
 		<div className="">
 			<Modal
-				title={<h1 className="text-xl">Discount Slab List</h1>}
+				title={<h1 className="text-xl">{t("COMMON.SLAB_DISCOUNT")}</h1>}
 				open={isModalOpen}
 				className=""
 				width={{
@@ -156,13 +157,13 @@ function SlabList({ isModalOpen, setIsModalOpen, defaultObj }) {
 							pagination={false}
 							loading={{
 								spinning: loading,
-								tip: "Loading data...",
+								tip: t("COMMON.LOADING_DATA"),
 								indicator: <Spin className="h-100 mt-6" size="small" />,
 							}}
 							locale={{
 								emptyText: (
 									<div className="w-full h-full flex items-center justify-center bg-[#F2EDED] py-4">
-										<Empty />
+										<Empty description={t("COMMON.NO_RESULTS_FOUND")} />
 									</div>
 								),
 							}}
@@ -214,12 +215,12 @@ function SlabList({ isModalOpen, setIsModalOpen, defaultObj }) {
 						<button
 							className="rounded-lg flex-[1] bg-primary text-white p-3"
 							onClick={handleLoad}>
-							Load
+							{t("COMMON.LOAD")}
 						</button>
 						<button
 							className="rounded-lg flex-[1] bg-success text-white p-3  "
 							onClick={handleCancel}>
-							Cancel
+							{t("COMMON.CANCEL")}
 						</button>
 					</div>
 				</div>
