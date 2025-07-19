@@ -423,7 +423,36 @@
   "UNSETTLED": "غير مستقر",
   "SETTLED": "مستقر",
   "AMOUNT": "المبلغ"
+},
+"TABLE_MANAGEMENT": {
+  "TITLE": "إدارة الطاولة",
+  "COVERS": "عدد المقاعد: {{count}}"
+},
+"TABLE_TRANSFER": {
+  "TITLE": "نقل الطاولة",
+  "NEXT": "التالي",
+  "BACK": "عودة",
+  "RESET": "إعادة تعيين",
+  "ITEMS": "عناصر",
+  "TABLE": "طاولة",
+  "CHECKER": "مراجعة",
+  "FROM_NOT_SELECTED": "لم يتم اختيار طاولة المصدر",
+  "TO_NOT_SELECTED": "لم يتم اختيار طاولة الوجهة",
+  "FROM_LABEL": "من : {{tableCode}}",
+  "TO_LABEL": "إلى : {{tableCode}}",
+  "SELECT_ITEM": "يرجى اختيار عنصر واحد على الأقل للتحويل.",
+  "SELECT_BOTH_TABLES": "يرجى اختيار كلتا الطاولتين (من وإلى).",
+  "SELECT_FROM_TABLE": "يرجى اختيار طاولة المصدر.",
+  "SELECT_TO_TABLE": "يرجى اختيار الطاولة الوجهة.",
+  "TABLE_EMPTY_TITLE": "{{tableCode}} طاولة فارغة",
+  "NO_ITEMS_TO_TRANSFER": "لا توجد عناصر للتحويل",
+  "NO_NEW_ITEMS_TITLE": "{{tableCode}} طاولة",
+  "NO_NEW_ITEMS_TEXT": "لا توجد عناصر جديدة للتحويل",
+  "TRANSFER_SUCCESS": "تم نقل الطاولة بنجاح",
+  "TRANSFER_FAILED": "فشل النقل",
+  "NO_ITEMS_LEFT": "لا توجد عناصر في هذه القائمة أو تم نقلها جميعاً إلى اليمين",
+  "NO_ITEMS_ADDED": "لا توجد عناصر مضافة",
+  "ENTER_NOTES": "أدخل ملاحظاتك"
 }
-
 
 }

@@ -8,17 +8,19 @@ import { Spin } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { kotTableIpdate, updateTable } from "../../redux/slices/orderSlice";
 import { selectKotEdit } from "../../redux/selector/orderSlector";
+import { useTranslation } from "react-i18next";
 
 function TableManagement() {
-	// const outletDetails = JSON.parse(localStorage.getItem("outletDetails"));
-	const navigate = useNavigate();
-	const totalItem = window.screen.width <= 540 ? 30 : 49;
-	const [tablePage, setTablePage] = useState(0);
-	const [tableData, setTableData] = useState([]);
-	const [tableLoc, setTableLoc] = useState([]);
-	const [loading, isLoading] = useState(false);
-	const dispatch = useDispatch();
-	const outletDetails = JSON.parse(localStorage.getItem("outletDetails"));
+        // const outletDetails = JSON.parse(localStorage.getItem("outletDetails"));
+        const navigate = useNavigate();
+        const totalItem = window.screen.width <= 540 ? 30 : 49;
+        const [tablePage, setTablePage] = useState(0);
+        const [tableData, setTableData] = useState([]);
+        const [tableLoc, setTableLoc] = useState([]);
+        const [loading, isLoading] = useState(false);
+        const dispatch = useDispatch();
+        const outletDetails = JSON.parse(localStorage.getItem("outletDetails"));
+        const { t } = useTranslation();
 
 	const isEdit = useSelector(selectKotEdit);
 	const { table: tableSelector } = useSelector((state) => state?.order);
@@ -85,10 +87,10 @@ function TableManagement() {
 	return (
 		<div className="p-2 flex flex-col h-screen overflow-auto lg:overflow-hidden gap-1">
 			{/* Top Header section */}
-			<div className="flex justify-between items-center">
-				<span className="font-[600] text-lg w-11/12 text-center">
-					Table Management
-				</span>
+                        <div className="flex justify-between items-center">
+                                <span className="font-[600] text-lg w-11/12 text-center">
+                                        {t("TABLE_MANAGEMENT.TITLE")}
+                                </span>
 				<Icon
 					icon="carbon:close-filled"
 					width="30"
@@ -115,9 +117,9 @@ function TableManagement() {
 								</button>
 							))
 						) : (
-							<span className="col-span-6 flex justify-center items-center">
-								{loading ? <Spin /> : "No data found"}
-							</span>
+                                                        <span className="col-span-6 flex justify-center items-center">
+                                                                {loading ? <Spin /> : t("COMMON.NO_RESULTS_FOUND")}
+                                                        </span>
 						)}
 					</div>
 					<SlideArrow direction="right" width="50px" />
@@ -161,7 +163,7 @@ function TableManagement() {
 									{table ? (
 										<>
 											{table?.tablecode}
-											<span className="block">Covers: {table?.chairs}</span>
+                                                                               <span className="block">{t("TABLE_MANAGEMENT.COVERS", { count: table?.chairs })}</span>
 										</>
 									) : (
 										<span className="text-gray-500"></span>

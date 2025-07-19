@@ -25,6 +25,7 @@ import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { updateTransferStatus } from "../../redux/slices/tblTransferSlice";
 import NumberInputModal from "../../components/PinINoutModal";
+import { useTranslation } from "react-i18next";
 import {
   customerOrderMod,
   emptyDishList,
@@ -40,6 +41,7 @@ import { updateCustomerData } from "../../redux/slices/customerSlice";
 function Tabletransferdemo() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const totalItem = window.screen.width <= 540 ? 30 : 49;
   const [tablePage, setTablePage] = useState(0);
   const [tableData, setTableData] = useState([]);
@@ -95,7 +97,7 @@ function Tabletransferdemo() {
   useEffect(() => {
     if (authenticate) {
       Swal.fire({
-        title: "Authenticating...",
+        title: t("COMMON.AUTHENTICATING"),
         allowOutsideClick: false,
         didOpen: () => Swal.showLoading(),
       });
@@ -401,7 +403,7 @@ function Tabletransferdemo() {
     );
 
     if (selectedArrayitems.length === 0) {
-      toast.error("Please select at least one item to transfer.");
+      toast.error(t("TABLE_TRANSFER.SELECT_ITEM"));
       return;
     } else {
       // Save previous state for back button functionality
@@ -434,7 +436,7 @@ function Tabletransferdemo() {
     );
 
     if (selectedArrayitems.length === 0) {
-      toast.error("Please select at least one item to transfer.");
+      toast.error(t("TABLE_TRANSFER.SELECT_ITEM"));
       return;
     } else {
       // Save previous state for back button functionality
@@ -482,11 +484,13 @@ function Tabletransferdemo() {
     const result = isEqual(newTableItems, initialTotabledata);
     if (newTableItems.length === 0) {
       Swal.fire({
-        title: `${selectedTotableDetails?.tablecode} Table Empty`,
-        text: `Still No Items to Transfer`,
+        title: t("TABLE_TRANSFER.TABLE_EMPTY_TITLE", {
+          tableCode: selectedTotableDetails?.tablecode,
+        }),
+        text: t("TABLE_TRANSFER.NO_ITEMS_TO_TRANSFER"),
         icon: "error",
         showCancelButton: false,
-        confirmButtonText: "Okay",
+        confirmButtonText: t("COMMON.OK"),
         confirmButtonColor: "#ec4d4f",
       }).then((result) => {
         if (result.isConfirmed) {
@@ -495,11 +499,13 @@ function Tabletransferdemo() {
       });
     } else if (result) {
       Swal.fire({
-        title: `${selectedTotableDetails?.tablecode} Table`,
-        text: `No New Items to Transfer`,
+        title: t("TABLE_TRANSFER.NO_NEW_ITEMS_TITLE", {
+          tableCode: selectedTotableDetails?.tablecode,
+        }),
+        text: t("TABLE_TRANSFER.NO_NEW_ITEMS_TEXT"),
         icon: "info",
         showCancelButton: false,
-        confirmButtonText: "Okay",
+        confirmButtonText: t("COMMON.OK"),
         confirmButtonColor: "#ec4d4f",
       }).then((result) => {
         if (result.isConfirmed) {
@@ -640,7 +646,7 @@ function Tabletransferdemo() {
       .then((data) => {
         if (data?.status === "true") {
           isAuthenticate(false);
-          toast.success(data?.message || "Table transfer successful");
+          toast.success(data?.message || t("TABLE_TRANSFER.TRANSFER_SUCCESS"));
           setKotDetil(null);
           setKotItemDetils([]);
           setNewTableItems([]);
@@ -698,8 +704,8 @@ function Tabletransferdemo() {
         console.error("Transfer Error");
         Swal.fire({
           icon: "error",
-          title: "Error",
-          text: "Transfer Failed",
+          title: t("COMMON.ERROR"),
+          text: t("TABLE_TRANSFER.TRANSFER_FAILED"),
         });
       })
       .finally(() => {});
@@ -711,7 +717,7 @@ function Tabletransferdemo() {
 
       <div className="flex justify-between items-center mb-5">
         <span className="font-[600] text-lg w-11/12 text-center">
-          Table Transfer
+          {t("TABLE_TRANSFER.TITLE")}
         </span>
         <Icon
           icon="carbon:close-filled"
@@ -740,7 +746,7 @@ function Tabletransferdemo() {
                 ))
               ) : (
                 <span className="col-span-6 flex justify-center items-center">
-                  {loading ? <Spin /> : "No data found"}
+                  {loading ? <Spin /> : t("COMMON.NO_RESULTS_FOUND")}
                 </span>
               )}
             </div>
@@ -811,7 +817,7 @@ function Tabletransferdemo() {
                             <>
                               {table?.tablecode}
                               <span className="block">
-                                Covers: {table?.chairs}
+                                {t("TABLE_MANAGEMENT.COVERS", { count: table?.chairs })}
                               </span>
                             </>
                           ) : (
@@ -943,7 +949,7 @@ function Tabletransferdemo() {
                             <>
                               {table?.tablecode}
                               <span className="block">
-                                Covers: {table?.chairs}
+                                {t("TABLE_MANAGEMENT.COVERS", { count: table?.chairs })}
                               </span>
                             </>
                           ) : (
@@ -969,16 +975,24 @@ function Tabletransferdemo() {
           <div className="flex flex-col md:flex-row justify-end items-center mt-5 gap-1">
             <button className="bg-green-600 text-white p-2 rounded-lg w-full">
               {selectedFromtableDetails.tableid ? (
-                <span>From : {selectedFromtableDetails.tablecode}</span>
+                <span>
+                  {t("TABLE_TRANSFER.FROM_LABEL", {
+                    tableCode: selectedFromtableDetails.tablecode,
+                  })}
+                </span>
               ) : (
-                <span>From Table Not Selected</span>
+                <span>{t("TABLE_TRANSFER.FROM_NOT_SELECTED")}</span>
               )}
             </button>
             <button className="bg-green-600 text-white p-2 rounded-lg w-full">
               {selectedTotableDetails.tableid ? (
-                <span>To : {selectedTotableDetails.tablecode}</span>
+                <span>
+                  {t("TABLE_TRANSFER.TO_LABEL", {
+                    tableCode: selectedTotableDetails.tablecode,
+                  })}
+                </span>
               ) : (
-                <span>To Table Not Selected</span>
+                <span>{t("TABLE_TRANSFER.TO_NOT_SELECTED")}</span>
               )}
             </button>
 
@@ -990,13 +1004,13 @@ function Tabletransferdemo() {
                   isEmpty(selectedFromtableDetails) &&
                   isEmpty(selectedTotableDetails)
                 ) {
-                  toast.error("Please select both From and To tables.");
+                  toast.error(t("TABLE_TRANSFER.SELECT_BOTH_TABLES"));
                   return;
                 } else if (isEmpty(selectedFromtableDetails)) {
-                  toast.error("Please select From table.");
+                  toast.error(t("TABLE_TRANSFER.SELECT_FROM_TABLE"));
                   return;
                 } else if (isEmpty(selectedTotableDetails)) {
-                  toast.error("Please select To table.");
+                  toast.error(t("TABLE_TRANSFER.SELECT_TO_TABLE"));
                   return;
                 } else {
                   setSereenToggler(false);
@@ -1007,7 +1021,7 @@ function Tabletransferdemo() {
                 //getKotDetails();
               }}
             >
-              Next
+              {t("TABLE_TRANSFER.NEXT")}
             </button>
           </div>
         </div>
@@ -1037,19 +1051,19 @@ function Tabletransferdemo() {
                 <div className="mt-2 p-3 sm:p-4 md:p-5 bg-[#F2EDED] rounded-md overflow-y-auto shadow-md h-[400px] scrollbar-thin scrollbar-thumb-gray-400 transition-all">
                   <div className="flex mb-2">
                     <div className="flex-[1]  px-4 py-2 bg-[#e8dcdc] text-l font-bold text-gray-900">
-                      <Typography className="h-min">Qty</Typography>
+                      <Typography className="h-min">{t("COMMON.QUANTITY")}</Typography>
                     </div>
                     <div className="flex-[3]  text-center px-4 py-2 bg-[#d2d2d2] text-l font-bold text-gray-900">
-                      Description
+                      {t("COMMON.DESCRIPTION")}
                     </div>
                     <div className="flex-[1] flex justify-end px-4 py-2 bg-[#e8dcdc] text-l font-bold text-gray-900">
-                      Amount
+                      {t("COMMON.AMOUNT")}
                     </div>
                   </div>
 
                   {kotItemDetils?.length === 0 && (
                     <div className="text-center text-gray-500">
-                      No items in this list or All Items are Shifted to Right
+                      {t("TABLE_TRANSFER.NO_ITEMS_LEFT")}
                     </div>
                   )}
 
@@ -1149,7 +1163,7 @@ function Tabletransferdemo() {
                     size={size}
                     onClick={() => transferTable()}
                   >
-                    Table
+                    {t("TABLE_TRANSFER.TABLE")}
                   </Button>
                   <Button
                     type="primary"
@@ -1158,7 +1172,7 @@ function Tabletransferdemo() {
                     size={size}
                     onClick={() => transferItems()}
                   >
-                    Items
+                    {t("TABLE_TRANSFER.ITEMS")}
                   </Button>
                   <Button
                     type="primary"
@@ -1167,7 +1181,7 @@ function Tabletransferdemo() {
                     size={size}
                     onClick={() => transferItemsfromright()}
                   >
-                    Back
+                    {t("TABLE_TRANSFER.BACK")}
                   </Button>
                   <Button
                     type="primary"
@@ -1180,7 +1194,7 @@ function Tabletransferdemo() {
                       borderColor: "#10B981",
                     }}
                   >
-                    Reset
+                    {t("TABLE_TRANSFER.RESET")}
                   </Button>
                   <Button
                     type="primary"
@@ -1194,7 +1208,7 @@ function Tabletransferdemo() {
                       display: "none",
                     }}
                   >
-                    Checker
+                    {t("TABLE_TRANSFER.CHECKER")}
                   </Button>
                   <Button
                     type="primary"
@@ -1204,7 +1218,7 @@ function Tabletransferdemo() {
                     size={size}
                     onClick={() => tbltransferSubmit()}
                   >
-                    Submit
+                    {t("COMMON.SUBMIT")}
                   </Button>
                 </div>
                 <Modal
@@ -1218,7 +1232,7 @@ function Tabletransferdemo() {
                     modalRef.current?.openModal();
                   }}
                   width={600}
-                  title="Enter Your Notes"
+                  title={t("TABLE_TRANSFER.ENTER_NOTES")}
                 >
                   <Input.TextArea
                     rows={4}
@@ -1282,19 +1296,19 @@ function Tabletransferdemo() {
                 >
                   <div className="flex mb-2">
                     <div className="flex-[1]  px-4 py-2 bg-[#e8dcdc] text-l font-bold text-gray-900">
-                      <Typography className="h-min">Qty</Typography>
+                      <Typography className="h-min">{t("COMMON.QUANTITY")}</Typography>
                     </div>
                     <div className="flex-[3]  text-center px-4 py-2 bg-[#d2d2d2] text-l font-bold text-gray-900">
-                      Description
+                      {t("COMMON.DESCRIPTION")}
                     </div>
                     <div className="flex-[1] flex justify-end px-4 py-2 bg-[#e8dcdc] text-l font-bold text-gray-900">
-                      Amount
+                      {t("COMMON.AMOUNT")}
                     </div>
                   </div>
 
                   {newTableItems.length === 0 && (
                     <div className="text-center text-gray-500">
-                      No Items Added
+                      {t("TABLE_TRANSFER.NO_ITEMS_ADDED")}
                     </div>
                   )}
 
