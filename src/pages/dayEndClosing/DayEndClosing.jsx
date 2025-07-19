@@ -32,6 +32,7 @@ import moment from "moment";
 import { Icon } from "@iconify/react";
 
 import { userModel } from "../../plugins/models";
+import { useTranslation } from "react-i18next";
 
 const { Title, Text } = Typography;
 
@@ -46,6 +47,7 @@ function DayEndClosing() {
   const [showpending, setShowPending] = React.useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   //pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
   const [loading, setLoading] = React.useState(false);
@@ -1222,8 +1224,8 @@ function DayEndClosing() {
     ) {
       setLoader(false);
       Swal.fire({
-        title: "Day end closing cannot be done",
-        text: `Cash Amount, Credit Card Amount, and City Ledger Amount are required. Please enter valid values.`,
+        title: t("DAY_END_CLOSING.CANNOT_CLOSE_TITLE"),
+        text: t("DAY_END_CLOSING.AMOUNT_MISSING"),
         icon: "error",
         showCancelButton: false,
         confirmButtonText: "Ok",
@@ -1238,8 +1240,8 @@ function DayEndClosing() {
       finalDataset.dayendclosingtodate == null
     ) {
       Swal.fire({
-        title: "Day end closing cannot be done.",
-        text: `Start Date and End Date required.`,
+        title: t("DAY_END_CLOSING.CANNOT_CLOSE_TITLE"),
+        text: t("DAY_END_CLOSING.DATE_REQUIRED_TEXT"),
         icon: "error",
         showCancelButton: false,
         confirmButtonText: "Ok",
@@ -1251,8 +1253,8 @@ function DayEndClosing() {
       });
     } else {
       Swal.fire({
-        title: "Day end closing in progress",
-        text: `Please review all details before proceeding.`,
+        title: t("DAY_END_CLOSING.IN_PROGRESS_TITLE"),
+        text: t("DAY_END_CLOSING.IN_PROGRESS_TEXT"),
         icon: "info",
         showCancelButton: true,
         confirmButtonText: "Ok",
@@ -1277,7 +1279,7 @@ function DayEndClosing() {
               } else {
                 setLoader(false);
                 Swal.fire({
-                  title: "Day end closing cannot be done.",
+                  title: t("DAY_END_CLOSING.CANNOT_CLOSE_TITLE"),
                   text: data?.message,
                   icon: "error",
                   showCancelButton: false,
@@ -1363,7 +1365,7 @@ function DayEndClosing() {
       </div>
 
       <Title level={3} style={{ textAlign: "center", color: "white" }}>
-        Day End Closing
+        {t("DAY_END_CLOSING.TITLE")}
       </Title>
 
       <div

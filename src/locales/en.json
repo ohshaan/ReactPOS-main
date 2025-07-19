@@ -417,8 +417,64 @@
   "UNSETTLED": "Unsettled",
   "SETTLED": "Settled",
   "AMOUNT": "Amount"
+},
+"TABLE_MANAGEMENT": {
+  "TITLE": "Table Management",
+  "COVERS": "Covers: {{count}}"
+},
+"TABLE_TRANSFER": {
+  "TITLE": "Table Transfer",
+  "NEXT": "Next",
+  "BACK": "Back",
+  "RESET": "Reset",
+  "ITEMS": "Items",
+  "TABLE": "Table",
+  "CHECKER": "Checker",
+  "FROM_NOT_SELECTED": "From Table Not Selected",
+  "TO_NOT_SELECTED": "To Table Not Selected",
+  "FROM_LABEL": "From : {{tableCode}}",
+  "TO_LABEL": "To : {{tableCode}}",
+  "SELECT_ITEM": "Please select at least one item to transfer.",
+  "SELECT_BOTH_TABLES": "Please select both From and To tables.",
+  "SELECT_FROM_TABLE": "Please select From table.",
+  "SELECT_TO_TABLE": "Please select To table.",
+  "TABLE_EMPTY_TITLE": "{{tableCode}} Table Empty",
+  "NO_ITEMS_TO_TRANSFER": "Still No Items to Transfer",
+  "NO_NEW_ITEMS_TITLE": "{{tableCode}} Table",
+  "NO_NEW_ITEMS_TEXT": "No New Items to Transfer",
+  "TRANSFER_SUCCESS": "Table transfer successful",
+  "TRANSFER_FAILED": "Transfer Failed",
+  "NO_ITEMS_LEFT": "No items in this list or All Items are Shifted to Right",
+  "NO_ITEMS_ADDED": "No Items Added",
+  "ENTER_NOTES": "Enter Your Notes"
+},
+"SHIFT_CLOSING": {
+  "TITLE": "Shift Closing",
+  "START_DATE": "Shift Starting Date & Time :",
+  "END_DATE": "Shift Closing Date & Time :",
+  "CASH_AMOUNT": "Cash Amount :",
+  "CREDIT_CARD_AMOUNT": "Credit Card Amount :",
+  "CITY_LEDGER_AMOUNT": "City Ledger Amount :",
+  "CANNOT_CLOSE_TITLE": "Shift Cannot be closed",
+  "CANNOT_CLOSE_TEXT": "Cash Amount, Credit Card Amount, and City Ledger Amount are required. Please enter valid values."
+},
+"DAY_END_CLOSING": {
+  "TITLE": "Day End Closing",
+  "CANNOT_CLOSE_TITLE": "Day end closing cannot be done",
+  "AMOUNT_MISSING": "Cash Amount, Credit Card Amount, and City Ledger Amount are required. Please enter valid values.",
+  "DATE_REQUIRED_TEXT": "Start Date and End Date required.",
+  "IN_PROGRESS_TITLE": "Day end closing in progress",
+  "IN_PROGRESS_TEXT": "Please review all details before proceeding."
+},
+"POS_REPORT": {
+  "TITLE": "Report",
+  "BRIEF_REPORT": "Brief Report",
+  "KOT_REPORT": "Kot Report",
+  "ALL_INVOICE_REPORT": "All Invoice Reports",
+  "INVOICE_SUMMARY_REPORT": "Invoice Summary Reports",
+  "EMPLOYEE_WISE_INVOICE_REPORT": "Employee Wise Invoice Reports",
+  "OPEN_KOT_INVOICE_REPORT": "Open KOT Invoice Reports",
+  "COLLECTION_DETAILS_INVOICE_REPORT": "Collection Details Invoice Reports"
 }
-
-
 
 }
