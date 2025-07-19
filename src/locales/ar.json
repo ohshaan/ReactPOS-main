@@ -453,6 +453,7 @@
   "NO_ITEMS_LEFT": "لا توجد عناصر في هذه القائمة أو تم نقلها جميعاً إلى اليمين",
   "NO_ITEMS_ADDED": "لا توجد عناصر مضافة",
   "ENTER_NOTES": "أدخل ملاحظاتك"
+
 },
 "SHIFT_CLOSING": {
   "TITLE": "إغلاق الوردية",
@@ -481,6 +482,7 @@
   "EMPLOYEE_WISE_INVOICE_REPORT": "تقارير الفواتير حسب الموظف",
   "OPEN_KOT_INVOICE_REPORT": "تقارير فواتير KOT المفتوحة",
   "COLLECTION_DETAILS_INVOICE_REPORT": "تقارير تفاصيل التحصيل"
+
 }
 
 }

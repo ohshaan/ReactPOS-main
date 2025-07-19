@@ -447,6 +447,7 @@
   "NO_ITEMS_LEFT": "No items in this list or All Items are Shifted to Right",
   "NO_ITEMS_ADDED": "No Items Added",
   "ENTER_NOTES": "Enter Your Notes"
+
 },
 "SHIFT_CLOSING": {
   "TITLE": "Shift Closing",
@@ -475,6 +476,7 @@
   "EMPLOYEE_WISE_INVOICE_REPORT": "Employee Wise Invoice Reports",
   "OPEN_KOT_INVOICE_REPORT": "Open KOT Invoice Reports",
   "COLLECTION_DETAILS_INVOICE_REPORT": "Collection Details Invoice Reports"
+
 }
 
 }
