@@ -1,5 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { companyLogo } from "../assets/images";
+import { getStoredCompanyLogo } from "../utils/helpers";
 // import { selectOrderType } from "../redux/selector/orderSlector";
 
 function LeftHeader() {
@@ -7,7 +9,7 @@ function LeftHeader() {
 	const { customer } = useSelector((state) => state?.customer);
 	const { table, orderType } = useSelector((state) => state?.order);
 
-	const getCompanyLogo = localStorage.getItem("cmpLogo");
+       const getCompanyLogo = getStoredCompanyLogo();
 
 	return (
 		<div className="bg-[#F2EDED] w-full rounded-lg p-2 flex items-center">

@@ -115,5 +115,17 @@ export const parseDateTime = (
 			`Failed to parse datetime string: "${dateTimeString}" with format "${inputFormat}"`
 		);
 		return { formateDate: null, formateTime: null };
-	}
+        }
 };
+
+// Convenience function to obtain the stored company logo with a fallback
+import { companyLogo } from "../../assets/images";
+
+export const getStoredCompanyLogo = () => {
+        const stored = localStorage.getItem("cmpLogo");
+        if (!stored || stored === "null" || stored === "undefined") {
+                return companyLogo;
+        }
+        return stored;
+};
+

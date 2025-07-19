@@ -7,7 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
-import { AdlerLogo } from "../../assets/images";
+import { AdlerLogo, companyLogo } from "../../assets/images";
+import { getStoredCompanyLogo } from "../../utils/helpers";
 import { Layout, ListSlider, SlideArrow } from "../../components";
 import { showConfirmModal } from "../../components/ConfirmatinDialog";
 import NumberInputModal from "../../components/PinINoutModal";
@@ -154,7 +155,7 @@ function Kot() {
 
 	const customer = useSelector(selectCustomer);
 	// const getCompanyLogo = useSelector((state) => state?.user?.comapnyLogoApi);
-	const getCompanyLogo = localStorage.getItem("cmpLogo");
+        const getCompanyLogo = getStoredCompanyLogo();
 	// const { , , ,  } = useSelector(
 	// 	(state) => state?.order
 	// );

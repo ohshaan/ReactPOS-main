@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { userModel } from "../../plugins/models";
 import { companyLogo } from "../../assets/images";
+import { getStoredCompanyLogo } from "../../utils/helpers";
 import {
 	updateCompanyLogo,
 	updateUserDetails,
@@ -27,7 +28,7 @@ function Login() {
 	// const companyLogo = localStorage.getItem("cmpLogo");
 	const [loading, isLoading] = useState(false);
 	const [logoLoading, setLogoLoading] = useState(false);
-       const [logo, setLogo] = useState(localStorage.getItem("cmpLogo") || companyLogo);
+       const [logo, setLogo] = useState(getStoredCompanyLogo());
 	/**
 	 * The function `handlePinChange` updates the pin by appending the provided data if the pin length is
 	 * less than 6.
@@ -125,14 +126,15 @@ function Login() {
 
 				// Handle Logo
 
-				if (logoData?.status === "true") {
-					const logoUrl = `${import.meta.env.VITE_API_BASE_URL}${
-						logoData?.data?.image || ""
-					}`;
-					dispatch(updateCompanyLogo(logoUrl));
-					localStorage.setItem("cmpLogo", logoUrl);
-					setLogo(logoUrl);
-				}
+                                if (logoData?.status === "true" && logoData?.data?.image) {
+                                        const logoUrl = `${import.meta.env.VITE_API_BASE_URL}${logoData.data.image}`;
+                                        dispatch(updateCompanyLogo(logoUrl));
+                                        localStorage.setItem("cmpLogo", logoUrl);
+                                        setLogo(logoUrl);
+                                } else {
+                                        localStorage.removeItem("cmpLogo");
+                                        setLogo(companyLogo);
+                                }
 			})
 			.catch((error) => {
 				toast.error(t("LOGIN.FAILED_TO_LOAD_INITIAL_CONFIG"));
