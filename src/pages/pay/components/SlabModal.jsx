@@ -13,7 +13,7 @@ function SlabList({ isModalOpen, setIsModalOpen, defaultObj }) {
     const { t } = useTranslation();
 	const [slabList, setSlabList] = useState(null);
 	const [selected, setSelected] = useState(null);
-	const [loading, isLoading] = useState(false);
+	const [loading, setLoading] = useState(false);
 	const [searchText, setSearchText] = useState("");
 
 	const tableColumn = [
