@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
 import React, { use, useEffect, useRef, useState } from "react";
+import { companyLogo } from "../../assets/images";
 import { useNavigate } from "react-router-dom";
 import { SlideArrow } from "../../components";
 import { tableModel } from "../../plugins/models";
@@ -80,7 +81,7 @@ function Tabletransferdemo() {
   const outletDetail = localStorage.getItem("openOutlet");
   const outlet = JSON.parse(outletDetail);
   const date = localStorage.getItem("dateTime");
-  const getCompanyLogo = localStorage.getItem("cmpLogo");
+  const getCompanyLogo = localStorage.getItem("cmpLogo") || companyLogo;
 
   const [authenticate, isAuthenticate] = useState(false);
 

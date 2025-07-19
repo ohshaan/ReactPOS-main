@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
 import { useTranslation } from 'react-i18next';
+import { companyLogo } from "../../assets/images";
 import { Empty, Spin, Table } from "antd";
 import React, {
 	useCallback,
@@ -61,7 +62,7 @@ function RunningKot() {
 	const keyboardNotes = useRef();
     const { t } = useTranslation();
 
-	const getCompanyLogo = localStorage.getItem("cmpLogo");
+        const getCompanyLogo = localStorage.getItem("cmpLogo") || companyLogo;
 	const userDetails = JSON.parse(localStorage.getItem("user"));
 
 	// const config1 = useSelector(selectConfig);
