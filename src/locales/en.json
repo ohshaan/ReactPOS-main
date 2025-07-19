@@ -417,8 +417,10 @@
   "UNSETTLED": "Unsettled",
   "SETTLED": "Settled",
   "AMOUNT": "Amount"
+},
+"TABLE_MANAGEMENT": {
+  "TITLE": "Table Management",
+  "COVERS": "Covers: {{count}}"
 }
-
-
 
 }
