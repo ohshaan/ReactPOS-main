@@ -1,21 +1,28 @@
 // src/router.js (or wherever your router is)
 
 import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";
-import {
-	CustomerRegistration,
-	Kot,
-	Pay,
-	Login,
-	OutletSelection,
-	RunningKot,
-	TableManagement,
-	ShiftClosing,
-	DayEndClosing,
-	TableTransfer,
-	TableTransferdemo,
-	Report,
-} from "../pages";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
+
+const Login = lazy(() => import("../pages/login/Login"));
+const OutletSelection = lazy(() =>
+        import("../pages/ouletSelection/OutletSelection")
+);
+const Kot = lazy(() => import("../pages/kot/Kot"));
+const Pay = lazy(() => import("../pages/pay/Pay"));
+const CustomerRegistration = lazy(() =>
+        import("../pages/customeReg/CustomerRegistration")
+);
+const TableManagement = lazy(() =>
+        import("../pages/tableManagemnet/TableManagement")
+);
+const RunningKot = lazy(() => import("../pages/runnningKot/RunningKot"));
+const ShiftClosing = lazy(() => import("../pages/shiftClosing/ShiftClosing"));
+const DayEndClosing = lazy(() => import("../pages/dayEndClosing/DayEndClosing"));
+const TableTransfer = lazy(() => import("../pages/tableTransfer/Tabletransfer"));
+const TableTransferdemo = lazy(() =>
+        import("../pages/tableTransfer/TabletransferDemo")
+);
+const Report = lazy(() => import("../pages/posReport/posReport"));
 
 /**
  * ProtectedRoute ensures that only authenticated users can access the child routes.
@@ -65,68 +72,120 @@ const Root = () => {
 	}
 
 	// User is not logged in, show the Login component.
-	return <Login />;
+        return (
+                <Suspense fallback={<div>Loading...</div>}>
+                        <Login />
+                </Suspense>
+        );
 };
 
 const router = createBrowserRouter([
 	{
 		path: "/",
 		// Use the new Root component to handle the logic for this path
-		element: <Root />,
-	},
-	{
-		element: <ProtectedRoute />,
-		children: [
-			{
-				path: "/outletSelection",
-				element: <OutletSelection />,
-			},
-			{
-				path: "/kot",
-				element: <Kot />,
-			},
-			{
-				path: "/pay",
-				element: <Pay />,
-			},
-			{
-				path: "/customerReg",
-				element: <CustomerRegistration />,
-			},
-			{
-				path: "/customerReg/:type",
-				element: <CustomerRegistration />,
-			},
-			{
-				path: "/tableManagement",
-				element: <TableManagement />,
-			},
-			{
-				path: "/runningKot",
-				element: <RunningKot />,
-			},
-			{
-				path: "/shiftClosing",
-				element: <ShiftClosing />,
-			},
-			{
-				path: "/dayEndClosing",
-				element: <DayEndClosing />,
-			},
-			{
-				path: "/tableTransfer",
-				element: <TableTransfer />,
-			},
-			{
-				path: "/tableTransferdemo",
-				element: <TableTransferdemo />,
-			},
-			{
-				path: "/report",
-				element: <Report />,
-			},
-		],
-	},
+                element: <Root />,
+        },
+        {
+                element: <ProtectedRoute />,
+                children: [
+                        {
+                                path: "/outletSelection",
+                                element: (
+                                        <Suspense fallback={<div>Loading...</div>}>
+                                                <OutletSelection />
+                                        </Suspense>
+                                ),
+                        },
+                        {
+                                path: "/kot",
+                                element: (
+                                        <Suspense fallback={<div>Loading...</div>}>
+                                                <Kot />
+                                        </Suspense>
+                                ),
+                        },
+                        {
+                                path: "/pay",
+                                element: (
+                                        <Suspense fallback={<div>Loading...</div>}>
+                                                <Pay />
+                                        </Suspense>
+                                ),
+                        },
+                        {
+                                path: "/customerReg",
+                                element: (
+                                        <Suspense fallback={<div>Loading...</div>}>
+                                                <CustomerRegistration />
+                                        </Suspense>
+                                ),
+                        },
+                        {
+                                path: "/customerReg/:type",
+                                element: (
+                                        <Suspense fallback={<div>Loading...</div>}>
+                                                <CustomerRegistration />
+                                        </Suspense>
+                                ),
+                        },
+                        {
+                                path: "/tableManagement",
+                                element: (
+                                        <Suspense fallback={<div>Loading...</div>}>
+                                                <TableManagement />
+                                        </Suspense>
+                                ),
+                        },
+                        {
+                                path: "/runningKot",
+                                element: (
+                                        <Suspense fallback={<div>Loading...</div>}>
+                                                <RunningKot />
+                                        </Suspense>
+                                ),
+                        },
+                        {
+                                path: "/shiftClosing",
+                                element: (
+                                        <Suspense fallback={<div>Loading...</div>}>
+                                                <ShiftClosing />
+                                        </Suspense>
+                                ),
+                        },
+                        {
+                                path: "/dayEndClosing",
+                                element: (
+                                        <Suspense fallback={<div>Loading...</div>}>
+                                                <DayEndClosing />
+                                        </Suspense>
+                                ),
+                        },
+                        {
+                                path: "/tableTransfer",
+                                element: (
+                                        <Suspense fallback={<div>Loading...</div>}>
+                                                <TableTransfer />
+                                        </Suspense>
+                                ),
+                        },
+                        {
+                                path: "/tableTransferdemo",
+                                element: (
+                                        <Suspense fallback={<div>Loading...</div>}>
+                                                <TableTransferdemo />
+                                        </Suspense>
+                                ),
+                        },
+                        {
+                                path: "/report",
+                                element: (
+                                        <Suspense fallback={<div>Loading...</div>}>
+                                                <Report />
+                                        </Suspense>
+                                ),
+                        },
+                ],
+        },
 ]);
 
 export default router;

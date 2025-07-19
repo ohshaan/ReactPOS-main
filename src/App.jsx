@@ -1,4 +1,5 @@
 import { RouterProvider } from "react-router-dom";
+import { Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "./components/LanguageSelector";
 import router from "./routes/router";
@@ -166,11 +167,14 @@ function App() {
 		validateSession();
 		getConfig();
 	}, []);
-	return (
-		<>  <LanguageSelector />
-			<RouterProvider router={router} />
-		</>
-	);
+        return (
+                <>
+                        <LanguageSelector />
+                        <Suspense fallback={<div>Loading...</div>}>
+                                <RouterProvider router={router} />
+                        </Suspense>
+                </>
+        );
 }
 
 export default App;
